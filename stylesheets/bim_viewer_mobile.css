@@ -152,7 +152,7 @@
 }
 .file_mask span{
 	display:block;
-	background-image:url(/demos/apartment-building-mobile-viewer/images/camera.png);
+	background-image:url(/images/camera.png);
     background-position: center center;
     background-repeat: no-repeat;
 	height:48px;
