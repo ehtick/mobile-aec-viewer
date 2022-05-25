@@ -1,7 +1,6 @@
 import { getContainerEndpoint } from "./get_endpoint.js";
 
 const createViewer = (modelName, models, containerId, hwp_version) => {
-    console.log("./model-data/" + modelName + ".scs");
     return new Promise(function (resolve, reject) {
         // if (!STREAM_CACHE_API || !HWP_VERSION) {
         //     console.log('Ensure values for HWP_VERSION and STREAM_CACHE_API are set.');

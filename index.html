@@ -2,31 +2,33 @@
 <html>
 
 <head>
-  <title><%= title %></title>
+  <title>
+    Mobile AEC Viewer
+  </title>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script type="text/javascript" src="/js/communicator_scripts/jquery-3.3.1.min.js"></script>
-  <script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.js"></script>
-  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/communicator_scripts/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.9.2.custom.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2022.1.0/hoops_web_viewer.js?v=2022.1.0"></script>
 
-  <script type="text/javascript" src="/js/communicator_scripts/web_viewer_ui.js?v=2022.1.0" id="hwvUI"></script>
+  <script type="text/javascript" src="js/communicator_scripts/web_viewer_ui.js?v=2022.1.0" id="hwvUI"></script>
 
-  <script type="module" src="/js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js?v=1374a67"></script>
-  <script type="text/javascript" defer src="/js/apartment-building-mobile-viewer-scripts/mobile_event_listener.js?v=1374a67"></script>
-  <script type="text/javascript" src="/js/apartment-building-mobile-viewer-scripts/camera.js?v=1374a67"></script>
-  <script type="text/javascript" src="/js/apartment-building-mobile-viewer-scripts/general_func.js?v=1374a67"></script>
-  <script type="text/javascript" src="/js/apartment-building-mobile-viewer-scripts/walk_func.js?v=1374a67"></script>
+  <script type="module" src="js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js?v=1374a67"></script>
+  <script type="text/javascript" defer src="js/apartment-building-mobile-viewer-scripts/mobile_event_listener.js?v=1374a67"></script>
+  <script type="text/javascript" src="js/apartment-building-mobile-viewer-scripts/camera.js?v=1374a67"></script>
+  <script type="text/javascript" src="js/apartment-building-mobile-viewer-scripts/general_func.js?v=1374a67"></script>
+  <script type="text/javascript" src="js/apartment-building-mobile-viewer-scripts/walk_func.js?v=1374a67"></script>
 
 
-  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
-  <link rel="stylesheet" href="/stylesheets/jquery-ui-1.9.2.custom.min.css" />
-  <link rel="stylesheet" href="/stylesheets/bim_viewer_mobile.css" />
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css" />
+  <link rel="stylesheet" href="stylesheets/jquery-ui-1.9.2.custom.min.css" />
+  <link rel="stylesheet" href="stylesheets/bim_viewer_mobile.css" />
 
   <script type="module">
-    import BIM_viewer_mobile from "/js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js";
+    import BIM_viewer_mobile from "./js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js";
 
     var mainViewer;
     var canvas;
@@ -58,39 +60,39 @@
   </div>
 
   <div id="arrowBtns" class="centerBlock" style="display: none">
-    <input class="arrowBtn" data-dir="forward" type="image" name="image_button" src="/images/arrow_up2.png" /><br />
-    <input class="arrowBtn" data-dir="backward" type="image" name="image_button" src="/images/arrow_down2.png" />
+    <input class="arrowBtn" data-dir="forward" type="image" name="image_button" src="images/arrow_up2.png" /><br />
+    <input class="arrowBtn" data-dir="backward" type="image" name="image_button" src="images/arrow_down2.png" />
   </div>
 
   <div id="leftBtns" class="arrowBtnRL" style="display: none">
-    <input class="arrowBtn" data-dir="turnLeft" type="image" name="image_button" src="/images/turn_left.png" /><br />
-    <input class="arrowBtn" data-dir="left" type="image" name="image_button" src="/images/arrow_left.png" />
+    <input class="arrowBtn" data-dir="turnLeft" type="image" name="image_button" src="images/turn_left.png" /><br />
+    <input class="arrowBtn" data-dir="left" type="image" name="image_button" src="images/arrow_left.png" />
   </div>
 
   <div id="rightBtns" class="arrowBtnRL" style="display: none">
-    <input class="arrowBtn" data-dir="turnRight" type="image" name="image_button" src="/images/turn_right.png" /><br />
-    <input class="arrowBtn" data-dir="right" type="image" name="image_button" src="/images/arrow_right.png" />
+    <input class="arrowBtn" data-dir="turnRight" type="image" name="image_button" src="images/turn_right.png" /><br />
+    <input class="arrowBtn" data-dir="right" type="image" name="image_button" src="images/arrow_right.png" />
   </div>
 
   <div id="zoomBtns" style="display: none">
-    <input class="zoomBtn" data-dir="up" type="image" name="image_button" src="/images/plus.png" /><br />
-    <input class="zoomBtn" data-dir="down" type="image" name="image_button" src="/images/minus.png" />
+    <input class="zoomBtn" data-dir="up" type="image" name="image_button" src="images/plus.png" /><br />
+    <input class="zoomBtn" data-dir="down" type="image" name="image_button" src="images/minus.png" />
   </div>
 
   <div id="flatLeftBtn" class="flatArrowBtns" style="display: none">
-    <input class="flatArrowBtn" data-dir="left" type="image" name="image_button" src="/images/arrow_left.png" />
+    <input class="flatArrowBtn" data-dir="left" type="image" name="image_button" src="images/arrow_left.png" />
   </div>
 
   <div id="flatRightBtn" class="flatArrowBtns" style="display: none">
-    <input class="flatArrowBtn" data-dir="right" type="image" name="image_button" src="/images/arrow_right.png" />
+    <input class="flatArrowBtn" data-dir="right" type="image" name="image_button" src="images/arrow_right.png" />
   </div>
 
   <div id="flatUpBtn" class="flatArrowBtns" style="display: none">
-    <input class="flatArrowBtn" data-dir="up" type="image" name="image_button" src="/images/arrow_up.png" />
+    <input class="flatArrowBtn" data-dir="up" type="image" name="image_button" src="images/arrow_up.png" />
   </div>
 
   <div id="flatDownBtn" class="flatArrowBtns" style="display: none">
-    <input class="flatArrowBtn" data-dir="down" type="image" name="image_button" src="/images/arrow_down.png" />
+    <input class="flatArrowBtn" data-dir="down" type="image" name="image_button" src="images/arrow_down.png" />
   </div>
 
   <div id="partProperty" class="" style="display: none">
@@ -116,9 +118,9 @@
       </span>
       <input type="text" id="mask_file_01" />
     </label>
-    <input class="inspectionBtn" data-id="OK" type="image" name="image_button" src="/images/ok.png" />
-    <input class="inspectionBtn" data-id="NG" type="image" name="image_button" src="/images/ng.png" />
-    <input class="inspectionBtn" data-id="Cancel" type="image" name="image_button" src="/images/close.png" />
+    <input class="inspectionBtn" data-id="OK" type="image" name="image_button" src="images/ok.png" />
+    <input class="inspectionBtn" data-id="NG" type="image" name="image_button" src="images/ng.png" />
+    <input class="inspectionBtn" data-id="Cancel" type="image" name="image_button" src="images/close.png" />
   </div>
   <div id="footer">© Tech Soft 3D All Rights Reserved</div>
 
