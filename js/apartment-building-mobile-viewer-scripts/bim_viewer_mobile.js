@@ -51,10 +51,13 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
     createViewer(modelName, [modelName], "container").then(function (hwv) {
         _this._viewer = hwv;
 
+
+
         //        var selectOperator = new facilitySelectOperator(_this._viewer);
         //        _this._selectOperatorHandle = _this._viewer.registerCustomOperator(selectOperator);
 
         function sceneReadyFunc() {
+            _this._viewer.pauseRendering();
             _this._viewer.getSelectionManager().setHighlightLineElementSelection(false);
             _this._viewer.getSelectionManager().setHighlightFaceElementSelection(false);
             _this._viewer.view.setAmbientOcclusionEnabled(true);
@@ -83,6 +86,8 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
                 }
             });
             //window.onbeforeunload = function() { $.get("/api/delete_token?token=" + [data.token]); } 
+
+
         }
 
         function modelStructureReadyFunc() {
@@ -111,7 +116,7 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
                 camera.setHeight(box.max.y - box.min.y + margin * 2);
                 camera.setProjection(Communicator.Projection.Orthographic);
                 overlayMgr.setCamera(_this._flatOverlayId, camera);
-
+                _this._viewer.resumeRendering();
                 _this._layoutOverray();
 
                 $("#filter1ParentBtn").removeClass("btn-default");
@@ -120,6 +125,7 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
 
                 _this._setWalkMode();
                 _this._cameraNavigate = camera;
+
             });
         }
 
