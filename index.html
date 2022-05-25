@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script type="text/javascript" src="/js/communicator_scripts/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="/js/jquery-ui-1.9.2.custom.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2022.1.0/hoops_web_viewer.js?v=2022.1.0"></script>
+
+  <script type="text/javascript" src="/js/communicator_scripts/web_viewer_ui.js?v=2022.1.0" id="hwvUI"></script>
+
+  <script type="module" src="/js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js?v=1374a67"></script>
+  <script type="text/javascript" defer src="/js/apartment-building-mobile-viewer-scripts/mobile_event_listener.js?v=1374a67"></script>
+  <script type="text/javascript" src="/js/apartment-building-mobile-viewer-scripts/camera.js?v=1374a67"></script>
+  <script type="text/javascript" src="/js/apartment-building-mobile-viewer-scripts/general_func.js?v=1374a67"></script>
+  <script type="text/javascript" src="/js/apartment-building-mobile-viewer-scripts/walk_func.js?v=1374a67"></script>
+
+
+  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+  <link rel="stylesheet" href="/stylesheets/jquery-ui-1.9.2.custom.min.css" />
+  <link rel="stylesheet" href="/stylesheets/bim_viewer_mobile.css" />
+
+  <script type="module">
+    import BIM_viewer_mobile from "/js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js";
+
+    var mainViewer;
+    var canvas;
+
+    var language = browserLanguage();
+    var isDebug = getURLArgument("debug");
+    mainViewer = new BIM_viewer_mobile(language, isDebug);
+    mainViewer.start("condo");
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="container"></div>
+  </div>
+
+  <canvas id="mycanvas" style="display: none"></canvas>
+
+  <button id="filter1ParentBtn" class="btn btn-default">Walk views</button><br />
+  <div id="filter1Btns" style="display: none">
+    <button class="filter1Btn btn btn-info" data-id="0" data-show="true">
+      Entrance</button><br />
+    <button class="filter1Btn btn btn-info" data-id="1" data-show="true">
+      Kitchen</button><br />
+    <button class="filter1Btn btn btn-info" data-id="2" data-show="true">
+      Room 1</button><br />
+    <button class="filter1Btn btn btn-info" data-id="3" data-show="true">
+      Room 2</button><br />
+  </div>
+
+  <div id="arrowBtns" class="centerBlock" style="display: none">
+    <input class="arrowBtn" data-dir="forward" type="image" name="image_button" src="/images/arrow_up2.png" /><br />
+    <input class="arrowBtn" data-dir="backward" type="image" name="image_button" src="/images/arrow_down2.png" />
+  </div>
+
+  <div id="leftBtns" class="arrowBtnRL" style="display: none">
+    <input class="arrowBtn" data-dir="turnLeft" type="image" name="image_button" src="/images/turn_left.png" /><br />
+    <input class="arrowBtn" data-dir="left" type="image" name="image_button" src="/images/arrow_left.png" />
+  </div>
+
+  <div id="rightBtns" class="arrowBtnRL" style="display: none">
+    <input class="arrowBtn" data-dir="turnRight" type="image" name="image_button" src="/images/turn_right.png" /><br />
+    <input class="arrowBtn" data-dir="right" type="image" name="image_button" src="/images/arrow_right.png" />
+  </div>
+
+  <div id="zoomBtns" style="display: none">
+    <input class="zoomBtn" data-dir="up" type="image" name="image_button" src="/images/plus.png" /><br />
+    <input class="zoomBtn" data-dir="down" type="image" name="image_button" src="/images/minus.png" />
+  </div>
+
+  <div id="flatLeftBtn" class="flatArrowBtns" style="display: none">
+    <input class="flatArrowBtn" data-dir="left" type="image" name="image_button" src="/images/arrow_left.png" />
+  </div>
+
+  <div id="flatRightBtn" class="flatArrowBtns" style="display: none">
+    <input class="flatArrowBtn" data-dir="right" type="image" name="image_button" src="/images/arrow_right.png" />
+  </div>
+
+  <div id="flatUpBtn" class="flatArrowBtns" style="display: none">
+    <input class="flatArrowBtn" data-dir="up" type="image" name="image_button" src="/images/arrow_up.png" />
+  </div>
+
+  <div id="flatDownBtn" class="flatArrowBtns" style="display: none">
+    <input class="flatArrowBtn" data-dir="down" type="image" name="image_button" src="/images/arrow_down.png" />
+  </div>
+
+  <div id="partProperty" class="" style="display: none">
+    <table id="partPropertyTable" class="table table-striped table-condensed">
+      <thead>
+        <tr style="text-align-last: center">
+          <th>Name</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr nowrap></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <input id="file_image" type="file" accept="image/*" capture="camera" class="file" />
+
+  <div id="inspectionToolbar" style="display: none">
+    <label class="file_mask" style="display: none">
+      <span>
+        <!- ->
+      </span>
+      <input type="text" id="mask_file_01" />
+    </label>
+    <input class="inspectionBtn" data-id="OK" type="image" name="image_button" src="/images/ok.png" />
+    <input class="inspectionBtn" data-id="NG" type="image" name="image_button" src="/images/ng.png" />
+    <input class="inspectionBtn" data-id="Cancel" type="image" name="image_button" src="/images/close.png" />
+  </div>
+  <div id="footer">© Tech Soft 3D All Rights Reserved</div>
+
+  <!-- for debug -->
+  <div id="rotationRateAlpha" class="debug" style="display: none"></div>
+  <div id="rotationRateBeta" class="debug" style="display: none"></div>
+  <div id="rotationRateGamma" class="debug" style="display: none"></div>
+  <div id="orientation" class="debug" style="display: none"></div>
+  <div id="compassHeading" class="debug" style="display: none"></div>
+  <div id="info1" class="debug" style="display: none"></div>
+  <button id="testBtn" class="debug" style="display: none">Test</button><br />
+</body>
+
+<div class="transparent-div" id="transparent-div" style="visibility: hidden"></div>
+<div>
+  <button id="enable-device-motion" class="enable-device-motion-button" style="visibility: hidden">Click here to enable DeviceMotion</button>
+</div>
+
+</html>

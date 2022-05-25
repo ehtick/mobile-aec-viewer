@@ -1,0 +1,200 @@
+#filter1ParentBtn {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 100px;
+}
+.filter1Btn {
+    width: 100px
+}
+#filter1Btns {
+    position: absolute; 
+    right: 0px;
+    top: 35px;
+}
+#footer {
+    text-align: right;
+    font-size: 12px;
+    margin-right: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+#rotationRateAlpha {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    background-color: white;
+}
+#rotationRateBeta {
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    background-color: white;
+}
+#rotationRateGamma {
+    position: absolute;
+    left: 10px;
+    top: 45px;
+    background-color: white;
+}
+#orientation {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    background-color: white;
+}
+#compassHeading {
+    position: absolute;
+    left: 10px;
+    top: 75px;
+    background-color: white;
+}
+#info1 {
+    position: absolute;
+    left: 10px;
+    top: 90px;
+    background-color: white;
+}
+#testBtn {
+    position: absolute; 
+    left: 100px;
+    bottom: 10px;
+}
+.centerBlock {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    text-align:center;
+}
+.arrowBtn {
+    outline: 0;
+    width: 48px;
+    height: 48px;
+}
+#leftBtns {
+    left: 0;
+}
+#rightBtns {
+    right: 0;
+}
+.arrowBtnRL {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    outline: 0;
+}
+#zoomBtns {
+    position: absolute;
+    top: 80px;
+    right: 20px;
+}
+.zoomBtn {
+    outline: 0;
+    width: 48px;
+    height: 48px;
+}
+.flatArrowBtns {
+    position: absolute;
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    outline: 0;
+}
+#flatUpBtn {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+#flatDownBtn {
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+#flatLeftBtn {
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+#flatRightBtn {
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+#partProperty {
+    position: absolute;
+    overflow-y:auto;
+    left: 1px;
+    top: 53px;
+}
+#partPropertyTable {
+    background-color: white;
+}
+#file-image {
+    position: absolute; 
+    left: 0px;
+    bottom: 30px;
+}#mycanvas {
+    position: absolute; 
+    left: 0px;
+    top: 60px;
+    widows: 320px;
+    height: 240px;
+    z-index: 1;
+}
+#file_image,
+#mask_file_01 {
+	display:none;
+}
+.file_mask span{
+	display:block;
+	background-image:url(/demos/apartment-building-mobile-viewer/images/camera.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+	height:48px;
+	width:48px;
+	cursor:pointer;
+}
+#inspectionToolbar {
+    position: absolute; 
+    left: 1px;
+    top: 0px;
+    background-color: white;
+}
+.inspectionBtn {
+    width: 48px;
+    height: 48px;
+}
+
+.enable-device-motion-button {
+    background-color: #0090d0;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    z-index: 5;
+    width: 200px;
+    border-radius: 1px;
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+  }
+
+  .transparent-div {
+    background-color: grey;
+    z-index: 4; 
+    opacity: 0.5;
+    position:absolute; 
+    top:0px; 
+    left:0px; 
+    right: 0px; 
+    bottom: 0px
+  }
