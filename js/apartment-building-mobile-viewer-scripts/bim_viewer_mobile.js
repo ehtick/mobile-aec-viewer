@@ -1,4 +1,4 @@
-import createViewer from '/js/common/create_viewer.js';
+import createViewer from '../common/create_viewer.js';
 
 export default function BIM_viewer_mobile(language, debug) {
     this._viewer;
