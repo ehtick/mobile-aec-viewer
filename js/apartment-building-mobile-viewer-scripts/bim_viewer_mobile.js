@@ -60,7 +60,7 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
             _this._viewer.pauseRendering();
             _this._viewer.getSelectionManager().setHighlightLineElementSelection(false);
             _this._viewer.getSelectionManager().setHighlightFaceElementSelection(false);
-            _this._viewer.view.setAmbientOcclusionEnabled(true);
+            // _this._viewer.view.setAmbientOcclusionEnabled(true);
             _this._viewer.getSelectionManager().setNodeSelectionOutlineColor(new Communicator.Color(255, 0, 255));
             _this._viewer.getSelectionManager().setNodeSelectionColor(new Communicator.Color(128, 255, 255));
             _this._viewer.view.setDrawMode(Communicator.DrawMode.WireframeOnShaded);
