@@ -1,13 +1,15 @@
 import createViewer from '../common/create_viewer.js';
 
-export default function BIM_viewer_mobile(language, debug) {
+
+
+export default function BIM_viewer_mobile() { //(language, debug) {
     this._viewer;
-    this._language = language;
-    this._debug = debug;
+    // this._language = language;
+    // this._debug = debug;
     this._modelName;
     this._walkFunc;
     this._mobileEvent;
-    this._viewCameras = [];
+    // this._viewCameras = [];
     this._sphereId;
     this._flatOverlayId;
     this._currentNodeId;
@@ -33,31 +35,25 @@ BIM_viewer_mobile.prototype.start = function (modelName) {
     var _this = this;
     _this._modelName = modelName;
 
-    _this._initResources();
+    // _this._initResources();
     _this._createViewer(_this._modelName);
     _this._initEvents();
 };
 
-BIM_viewer_mobile.prototype._initResources = function () {
-    var _this = this;
+// BIM_viewer_mobile.prototype._initResources = function () {
+//     var _this = this;
 
-    if (_this._language == "ja") {
+//     if (_this._language == "ja") {
 
-    }
-};
+//     }
+// };
 
 BIM_viewer_mobile.prototype._createViewer = function (modelName) {
     var _this = this;
     createViewer(modelName, [modelName], "container").then(function (hwv) {
         _this._viewer = hwv;
-
-
-
-        //        var selectOperator = new facilitySelectOperator(_this._viewer);
-        //        _this._selectOperatorHandle = _this._viewer.registerCustomOperator(selectOperator);
-
         function sceneReadyFunc() {
-            _this._viewer.pauseRendering();
+            // _this._viewer.pauseRendering();
             _this._viewer.getSelectionManager().setHighlightLineElementSelection(false);
             _this._viewer.getSelectionManager().setHighlightFaceElementSelection(false);
             // _this._viewer.view.setAmbientOcclusionEnabled(true);
@@ -68,24 +64,28 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
             walkOp._rotationSpeed = 30;
             walkOp._walkSpeed = 1000;
 
-            $.getJSON("json/" + 'condo' + ".json", function (data) {
-                if (data.views) {
-                    var views = data.views;
-                    for (var i = 0; i < views.length; i++) {
-                        var json = views[i];
-                        var camera = new Communicator.Camera.construct(json);
-                        _this._viewCameras.push(camera);
-                    }
-                    _this._cameraWalk = _this._viewCameras[1];
-                    _this._viewer.getView().setCamera(_this._cameraWalk, 0);
-                }
 
-                // Mobile
-                if ((_this._screenConf == Communicator.ScreenConfiguration.Mobile) || (window.DeviceMotionEvent && typeof window.DeviceMotionEvent.requestPermission === "function")) {
-                    _this._mobileEvent = new MobileEventListener(_this._viewer, _this._walkFunc);
-                }
-            });
-            //window.onbeforeunload = function() { $.get("/api/delete_token?token=" + [data.token]); } 
+            _this._cameraWalk = Communicator.Camera.construct(cameraViews[1]);
+            _this._viewer.getView().setCamera(_this._cameraWalk, 0);
+
+            //         _this._viewer.getView().setCamera(_this._cameraWalk, 0);
+            // $.getJSON("json/" + 'condo' + ".json", function (data) {
+            //     if (data.views) {
+            //         var views = data.views;
+            //         for (var i = 0; i < views.length; i++) {
+            //             var json = views[i];
+            //             var camera = new Communicator.Camera.construct(json);
+            //             _this._viewCameras.push(camera);
+            //         }
+            //         _this._cameraWalk = _this._viewCameras[1];
+            //         _this._viewer.getView().setCamera(_this._cameraWalk, 0);
+            //     }
+
+            // Mobile
+            if ((_this._screenConf == Communicator.ScreenConfiguration.Mobile) || (window.DeviceMotionEvent && typeof window.DeviceMotionEvent.requestPermission === "function")) {
+                _this._mobileEvent = new MobileEventListener(_this._viewer, _this._walkFunc);
+            }
+            // });
 
 
         }
@@ -116,7 +116,7 @@ BIM_viewer_mobile.prototype._createViewer = function (modelName) {
                 camera.setHeight(box.max.y - box.min.y + margin * 2);
                 camera.setProjection(Communicator.Projection.Orthographic);
                 overlayMgr.setCamera(_this._flatOverlayId, camera);
-                _this._viewer.resumeRendering();
+                // _this._viewer.resumeRendering();
                 _this._layoutOverray();
 
                 $("#filter1ParentBtn").removeClass("btn-default");
@@ -303,8 +303,8 @@ BIM_viewer_mobile.prototype._initEvents = function () {
     })
 
 
-    if (_this._debug != undefined)
-        $(".debug").show();
+    // if (_this._debug != undefined)
+    //     $(".debug").show();
 
     // View
     $("#filter1ParentBtn").on("click", function () {
@@ -419,7 +419,8 @@ BIM_viewer_mobile.prototype._setWalkMode = function (cameraId) {
 
     _this._viewer.getModel().setNodesVisibility([5], true);
     if (cameraId != undefined)
-        _this._cameraWalk = _this._viewCameras[cameraId];
+
+        _this._cameraWalk = Communicator.Camera.construct(cameraViews[cameraId]);
     _this._viewer.getView().setCamera(_this._cameraWalk, 0);
 
     _this._viewer.getOperatorManager().clear();
@@ -547,3 +548,4 @@ BIM_viewer_mobile.prototype._drawImg = function (img) {
     $("#mycanvas").css("top", hsize + 53 + "px");
     $("#mycanvas").show();
 };
+

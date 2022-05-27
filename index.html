@@ -3,11 +3,11 @@
 
 <head>
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PB9P4KS');</script>
+  })(window,document,'script','dataLayer','GTM-PB9P4KS');</script> -->
   <!-- End Google Tag Manager -->
   <title>
     Mobile AEC Viewer
@@ -23,10 +23,10 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/techsoft3d/hoops-web-viewer@2022.1.0/hoops_web_viewer.js?v=2022.1.0"></script>
 
   <script type="text/javascript" src="js/communicator_scripts/web_viewer_ui.js?v=2022.1.0" id="hwvUI"></script>
-
-  <script type="module" src="js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js?v=1374a67"></script>
-  <script type="text/javascript" defer src="js/apartment-building-mobile-viewer-scripts/mobile_event_listener.js?v=1374a67"></script>
   <script type="text/javascript" src="js/apartment-building-mobile-viewer-scripts/camera.js?v=1374a67"></script>
+  <script type="module" src="js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js?v=1374a67"></script> 
+  <script type="text/javascript" defer src="js/apartment-building-mobile-viewer-scripts/mobile_event_listener.js?v=1374a67"></script>
+
   <script type="text/javascript" src="js/apartment-building-mobile-viewer-scripts/general_func.js?v=1374a67"></script>
   <script type="text/javascript" src="js/apartment-building-mobile-viewer-scripts/walk_func.js?v=1374a67"></script>
 
@@ -37,22 +37,30 @@
 
   <script type="module">
     import BIM_viewer_mobile from "./js/apartment-building-mobile-viewer-scripts/bim_viewer_mobile.js";
-
     var mainViewer;
-    var canvas;
-
-    var language = browserLanguage();
-    var isDebug = getURLArgument("debug");
-    mainViewer = new BIM_viewer_mobile(language, isDebug);
+    // var language = browserLanguage();
+    // var isDebug = getURLArgument("debug");
+    mainViewer = new BIM_viewer_mobile(); //(language), isDebug);
     mainViewer.start("condo");
   </script>
+
+  <!-- <script type="text/javascript">
+    window.onload = () => {
+        hwv = new Communicator.WebViewer({
+            containerId: "container",
+            endpointUri: "model-data/condo.scs"
+        });
+        hwv.start();
+    }
+</script> -->
+
 </head>
 
 <body>
 
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB9P4KS"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PB9P4KS"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
   <!-- End Google Tag Manager (noscript) -->
 
   <div id="content">
