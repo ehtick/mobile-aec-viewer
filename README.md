@@ -2,6 +2,8 @@
 
 See this demo running live on [GitHub Pages](https://techsoft3d.github.io/mobile-aec-viewer/).
 
+Watch a video walkthrough for this demo on [YouTube](https://youtu.be/S163AR_rQCc).
+
 ## In order to run locally
 
 We recommand using Visual Studio Code with the Live Server extension to run this application locally.
